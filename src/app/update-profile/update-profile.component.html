@@ -1,0 +1,78 @@
+<div class="card">
+  <h1 class="text-center text-warning m-5" *ngIf="isUpdated"> {{customer.lastname.toUpperCase()}} ,Your profile updated Successfully !</h1>
+  <form #update="ngForm" (ngSubmit)="updateProfile(update)" *ngIf="!isUpdated">
+  <div >
+    <h1 class="text-center">Profile Update Form</h1>
+    <div  class="d-flex flex-wrap">
+    <div class="per"> 
+      <h1 class="text-center"> Personal Details</h1>
+      
+      <dl class="frm">
+        <dt><label class="lbl">First Name:</label></dt>
+        <dd><input class="in"[ngClass]="{'vld':fname.invalid && fname.touched ,'bg-secondary text-warning':'fName'!=name}" type="text" name="firstName" [(ngModel)]="customer.firstName" #fname="ngModel" required minlength="4" pattern="[a-zA-Z ]*" [disabled]="'fName'!=name"><button class="edit" name="fName" *ngIf="'fName'!=name" (click)="edit($event)">edit</button><span class="bi-check-circle-fill ps-2" *ngIf="'fName'==name">edit</span></dd>
+        <dd *ngIf="fname.invalid && fname.touched" class="text-danger"><span class="bi bi-x-circle-fill"></span> minimum length 4 & Only characters and spaces are allowed!</dd>
+        <dd *ngIf="fname.valid" class="text-light"><span class="bi bi-check-circle-fill"></span> Valid</dd>
+        <dt><label class="lbl">Last Name:</label></dt>
+        <dd><input class="in" [ngClass]="{'vld':lname.invalid && lname.touched,'bg-secondary text-warning':'lName'!=name}" type="text" name="lastName" [(ngModel)]="customer.lastname" #lname="ngModel" required minlength="4" pattern="[a-zA-Z ]*" [disabled]="'lName'!=name"> <button class="edit" name="lName" *ngIf="'lName'!=name" (click)="edit($event)">edit</button><span class="bi-check-circle-fill ps-2" *ngIf="'lName'==name">edit</span></dd>
+        <dd *ngIf="lname.invalid && lname.touched" class="text-danger"><span class="bi bi-x-circle-fill"></span> minimum length 4 & Only characters and spaces are allowed!</dd>
+        <dd *ngIf="lname.valid" class="text-light"><span class="bi bi-check-circle-fill"></span> Valid</dd>
+        <dt><label class="lbl">Mobile No:</label></dt>
+        <dd><input class="in" [ngClass]="{'vld':phNo.invalid && phNo.touched ,'bg-secondary text-warning':'phno'!=name}" type="text" name="phNo" [(ngModel)]="customer.phNo" #phNo="ngModel" required pattern="^((\\+91-?)|0)?[6-9][0-9]{9}$" [disabled]="'phno'!=name"><button class="edit" name="phno" *ngIf="'phno'!=name" (click)="edit($event)">edit</button><span class="bi-check-circle-fill ps-2" *ngIf="'phno'==name">edit</span></dd>
+        <dd *ngIf="phNo.invalid && phNo.touched" class="text-danger"><span class="bi bi-x-circle-fill"></span> Invalid Mobile No </dd>
+        <dd *ngIf="phNo.valid" class="text-light"><span class="bi bi-check-circle-fill"></span> Valid</dd>
+        <dt><label class="lbl">Email:</label></dt>
+        <dd><input class="in" [ngClass]="{'vld':email.invalid && email.touched ,'bg-secondary text-warning':'mail'!=name}" type="email" name="email" [(ngModel)]="customer.email" #email="ngModel" required email="true" [disabled]="'mail'!=name"><button class="edit" name="mail" *ngIf="'mail'!=name" (click)="edit($event)">edit</button><span class="bi-check-circle-fill ps-2" *ngIf="'mail'==name">edit</span></dd>
+        <dd *ngIf="email.invalid && email.touched" class="text-danger"><span class="bi bi-x-circle-fill"></span> invalid email</dd>
+        <dd *ngIf="email.valid" class="text-light"><span class="bi bi-check-circle-fill"></span> Valid</dd>
+        </dl>
+    </div>
+    <div class="add">
+      <h1 class="text-center"> Address Details</h1>
+      
+      <div class="d-flex flex-wrap" >
+      <div class="add1">
+        <dl class="frm">
+          <dt><label class="lbl">House-No:</label></dt>
+          <dd><input class="in"[ngClass]="{'vld':hNo.invalid && hNo.touched ,'bg-secondary text-warning':'hno'!=name}" type="text" name="doorNo" [(ngModel)]="customer.address.doorNo" #hNo="ngModel" required minlength="4" pattern="[0-9 -]*" [disabled]="'hno'!=name"><button class="edit" name="hno" *ngIf="'hno'!=name" (click)="edit($event)">edit</button><span class="bi-check-circle-fill ps-2" *ngIf="'hno'==name">edit</span></dd>
+          <dd *ngIf="hNo.invalid && hNo.touched" class="text-danger"><span class="bi bi-x-circle-fill"></span> minimum length 4 & Only characters and spaces are allowed!</dd>
+          <dd *ngIf="hNo.valid" class="text-light"><span class="bi bi-check-circle-fill"></span> Valid</dd>
+          <dt><label class="lbl">Location:</label></dt>
+          <dd><input class="in" [ngClass]="{'vld':lc.invalid && lc.touched,'bg-secondary text-warning':'loc'!=name}" type="text" name="location" [(ngModel)]="customer.address.location" #lc="ngModel" required minlength="4" pattern="[a-zA-Z ]*" [disabled]="'loc'!=name"> <button class="edit" name="loc" *ngIf="'loc'!=name" (click)="edit($event)">edit</button><span class="bi-check-circle-fill ps-2" *ngIf="'loc'==name">edit</span></dd>
+          <dd *ngIf="lc.invalid && lc.touched" class="text-danger"><span class="bi bi-x-circle-fill"></span> minimum length 4 & Only characters and spaces are allowed!</dd>
+          <dd *ngIf="lc.valid" class="text-light"><span class="bi bi-check-circle-fill"></span> Valid</dd>
+          <dt><label class="lbl">Land Mark:</label></dt>
+          <dd><input class="in" [ngClass]="{'vld':lm.invalid && lm.touched,'bg-secondary text-warning':'lM'!=name}" type="text" name="landmark" [(ngModel)]="customer.address.landmark" #lm="ngModel"  minlength="4" pattern="[a-zA-Z ]*" [disabled]="'lM'!=name"> <button class="edit" name="lM" *ngIf="'lM'!=name" (click)="edit($event)">edit</button><span class="bi-check-circle-fill ps-2" *ngIf="'lM'==name">edit</span></dd>
+          <dd *ngIf="lm.invalid && lm.touched" class="text-danger"><span class="bi bi-x-circle-fill"></span> minimum length 4 & Only characters and spaces are allowed!</dd>
+          <dd *ngIf="lm.valid && lm.touched" class="text-light"><span class="bi bi-check-circle-fill"></span> Valid</dd>
+          <dt><label class="lbl">City:</label></dt>
+          <dd><input class="in" [ngClass]="{'vld':ct.invalid && ct.touched,'bg-secondary text-warning':'cty'!=name}" type="text" name="city" [(ngModel)]="customer.address.city" #ct="ngModel" required minlength="4" pattern="[a-zA-Z ]*" [disabled]="'cty'!=name"> <button class="edit" name="cty" *ngIf="'cty'!=name" (click)="edit($event)">edit</button><span class="bi-check-circle-fill ps-2" *ngIf="'cty'==name">edit</span></dd>
+          <dd *ngIf="ct.invalid && ct.touched" class="text-danger"><span class="bi bi-x-circle-fill"></span> minimum length 4 & Only characters and spaces are allowed!</dd>
+          <dd *ngIf="ct.valid" class="text-light"><span class="bi bi-check-circle-fill"></span> Valid</dd>
+          </dl>
+         </div>
+      <div class="add2">
+        <dl class="frm">
+          <dt><label class="lbl">State:</label></dt>
+          <dd><input class="in" [ngClass]="{'vld':st.invalid && st.touched ,'bg-secondary text-warning':'sta'!=name}" type="text" name="state" [(ngModel)]="customer.address.state" #st="ngModel" required  minlength="4" pattern="[a-zA-Z ]*" [disabled]="'sta'!=name"><button class="edit" name="sta" *ngIf="'sta'!=name" (click)="edit($event)">edit</button><span class="bi-check-circle-fill ps-2" *ngIf="'sta'==name">edit</span></dd>
+          <dd *ngIf="st.invalid && st.touched" class="text-danger"><span class="bi bi-x-circle-fill"></span> minimum length 4 & Only characters and spaces are allowed! </dd>
+          <dd *ngIf="st.valid" class="text-light"><span class="bi bi-check-circle-fill"></span> Valid</dd>
+          <dt><label class="lbl">Country:</label></dt>
+          <dd><input class="in" [ngClass]="{'vld':cntr.invalid && cntr.touched,'bg-secondary text-warning':'cntry'!=name}" type="text" name="country" [(ngModel)]="customer.address.country" #cntr="ngModel" required minlength="4" pattern="[a-zA-Z ]*" [disabled]="'cntry'!=name"> <button class="edit" name="cntry" *ngIf="'cntry'!=name" (click)="edit($event)">edit</button><span class="bi-check-circle-fill ps-2" *ngIf="'cntry'==name">edit</span></dd>
+          <dd *ngIf="cntr.invalid && cntr.touched" class="text-danger"><span class="bi bi-x-circle-fill"></span> minimum length 4 & Only characters and spaces are allowed!</dd>
+          <dd *ngIf="cntr.valid" class="text-light"><span class="bi bi-check-circle-fill"></span> Valid</dd>
+          <dt><label class="lbl">Pin Code:</label></dt>
+          <dd><input class="in" [ngClass]="{'vld':pcode.invalid && pcode.touched ,'bg-secondary text-warning':'pCode'!=name}" type="text" name="pincode" [(ngModel)]="customer.address.pincode" #pcode="ngModel" required pattern="[0-9]{6}$" [disabled]="'pCode'!=name"><button class="edit" name="pCode" *ngIf="'pCode'!=name" (click)="edit($event)">edit</button><span class="bi-check-circle-fill ps-2" *ngIf="'pCode'==name">edit</span></dd>
+          <dd *ngIf="pcode.invalid && pcode.touched" class="text-danger"><span class="bi bi-x-circle-fill"></span> invalid pincode</dd>
+          <dd *ngIf="pcode.valid" class="text-light"><span class="bi bi-check-circle-fill"></span> Valid</dd>
+        </dl>
+         </div>
+    </div>
+    
+    </div>
+    
+  </div>
+  
+  </div>
+  <button class="btn btn-primary text-primary ms-5"  style="background:yellow;" [disabled]="update.invalid || update.pristine"> Update </button>
+  </form>   
+</div>

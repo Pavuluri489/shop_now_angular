@@ -1,0 +1,30 @@
+.btn{
+    background: orange;
+    margin:1%;
+}
+.active{
+    margin:1%;
+    padding:8px 20px 8px 20px;
+    border:none;
+    border-radius:2%;
+    background: cyan;
+}
+dt,dd{
+    background: linear-gradient(to right, rgba(255, 255, 255, 0.601),rgba(192, 192, 192, 0.636));
+    padding:1%;
+    border:none;
+    border-radius:2%;
+    
+}
+input,select,textarea{
+    background: yellow;
+    border:none;
+    border-radius: 3%;
+    padding:10px 20px 10px 20px ;
+}
+.dropZone{
+    background: linear-gradient(to right,rgba(255, 166, 0, 0.549),rgba(255, 255, 0, 0.486));
+    min-height:200px;
+    max-height:200px;
+    color:cyan;
+}

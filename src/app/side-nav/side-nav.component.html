@@ -1,0 +1,35 @@
+<i class="bi bi-list p-2 bg-success menu ms-2" (click)="show()"></i>
+<div class="d-flex pt-4 oth" >
+    <div class="p-2 acc bar" [ngClass]="{'vis':visible,'hide':!visible}">
+ Others
+    </div>
+    <div class="p-2 main bar" [ngClass]="{'vis':!visible,'hide':visible}">
+      
+        <button *ngIf="! isLoggedIn()"class="btn" routerLink="/login"><span class="bi bi-person-fill"></span>Login</button>
+        <button *ngIf="! isLoggedIn()" class="btn" routerLink="/register"><span class="bi bi-person-fill"></span>Register</button>
+        <div *ngIf="isLoggedIn()"  class="text-center"style="border:1px solid silver">
+            <img [src]="profileImage" onerror="this.src='../assets/images/default.png';"width=100px height=100px style="border-radius:50%;" >
+            <i class="bi bi-camera-fill cam"></i><input type="file" class="fi" (change)="selectedFile($event)">
+             <button class="btn btn-primary"(click)="upload()" *ngIf="image!=null">Upload</button>
+            <h3> welcome {{customer.lastname}}</h3>
+        </div>
+        <div *ngIf="isLoggedIn()">
+            <button class="btns btn heading" (click)="profile()">Profile</button>
+            <div *ngIf="isProfile">
+            <button class="btns btn sub" routerLink="/update-profile"> Update Profile</button>
+            <button class="btns btn sub" routerLink="/view-profile"> View Profile</button>
+             </div>
+             <div *ngIf="isAdmin()">
+             <button class="btns btn heading" (click)="product()">Product</button><br>
+            <div *ngIf="isProduct">
+            <button class="btns btn sub" routerLink="/add-product"> Add new Product</button>
+            <button class="btns btn sub" routerLink="/view-products"> View Products</button>
+             </div>
+             <button class="btns btn heading" routerLink="/orders">Orders</button>
+            </div>
+        </div>
+        <button *ngIf="isLoggedIn()"class="btn" (click)="logout()">LogOut</button>
+        
+      
+    </div>
+</div>

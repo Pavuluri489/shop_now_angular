@@ -1,0 +1,22 @@
+
+<div class="container-fluid m-1 p-3">
+<div *ngFor="let sub of cate_products;let i=index">
+<div *ngIf="sub.cate.length!=0">
+  <div *ngFor="let subs of sub.cate">
+    <h1 style="background-image: url('assets/images/animation.gif');cursor: pointer;"class=" text-center text-warning p-2 border border-primary rounded"
+     routerLink="/products/{{subs.sub_cate[0].subCategory.category.categoryName}}/{{subs.sub_cate[0].subCategory.subCategoryName}}">
+      <img [src]="subs.sub_cate[0].subCategory.subCategoryImage.url" width="100px" height="50px" class="rounded">{{subs.sub_cate[0].subCategory.subCategoryName}}</h1>
+<div class="p-2 m-2 d-flex flex-wrap">
+  <div class="card img_card p-2 m-3 rounded border border-warning text-center" *ngFor="let x of splits"
+  routerLink="/products/{{subs.sub_cate[0].subCategory.category.categoryName}}/{{subs.sub_cate[0].subCategory.subCategoryName}}/{{subs.sub_cate[x].productId}}" >
+    <h4 class="text-primary border border-light rounded">{{subs.sub_cate[x].productName}}</h4>
+    <p class="text-danger border border-light rounded">{{subs.sub_cate[x].productOverview}}</p>
+    <img class="image" [src]="subs.sub_cate[x].productImages[n].url" >
+   <h4 class="mt-2 pt-2 pb-2"> <span class="text-light pt-2 pb-2">{{subs.sub_cate[x].productDiscountedPrice | currency:'INR'}} </span>
+    <span class="text-danger pt-2 pb-2" style="text-decoration: line-through;"> {{subs.sub_cate[x].productActualPrice | currency:'INR'}}</span></h4>
+  </div>
+</div>
+</div>
+</div>
+</div>
+</div>

@@ -1,0 +1,99 @@
+<div class="card">
+    <div>
+        <button class="btn" [ngClass]="{'active':nam=='ac'}" name="ac" (click)=clicked($event)> Add Category</button>
+        <button class="btn" [ngClass]="{'active':nam=='asc'}" name="asc" (click)=clicked($event)> Add Sub Category</button>
+        <button class="btn" [ngClass]="{'active':nam=='ap'}" name="ap" (click)=clicked($event)> Add Product</button>
+        <button class="btn" [ngClass]="{'active':nam=='ats'}" name="ats" (click)=clicked($event)> Add Technical specifications</button>
+        <button class="btn" [ngClass]="{'active':nam=='ami'}" name="ami" (click)=clicked($event)> Add Manufacturer Info</button>
+        <button class="btn" [ngClass]="{'active':nam=='aai'}" name="aai" (click)=clicked($event)> Add Additional Info</button>
+    </div>
+
+    <div class="card p-2 m-4" >
+        <div class="row">
+            <h3 class="text-center text-white" style="background:green">{{msg}}</h3>
+            <h3 class="text-center text-white" style="background:red">{{errMsg}}</h3>
+            <div class="col-6"*ngIf="nam=='ac'">
+       <form #categoryForm="ngForm" (ngSubmit)="cate(categoryForm)">
+        <dl class="m-1 p-3"> 
+            <dt>Category Name :</dt>
+            <dd><input type="text" name="categoryName" ngModel #category="ngModel" required></dd>
+            <dt>Category Image :</dt>
+            <dd><input type="file" name="categoryImage" ngModel #cate_image="ngModel" required (change)="image($event)"></dd>
+        </dl>
+        <button  class="btn text-light ms-4"style="background:blue" type="submit"> Add Category</button>
+        
+       </form></div>
+       <div class="col-6"*ngIf="nam=='asc'">
+        <form #subcategoryForm="ngForm" (ngSubmit)="sub_cate(subcategoryForm)">
+         <dl class="m-1 p-3"> 
+             <dt> Category Name :</dt>
+             <dd><select class="p-2 ps-4 pe-4" value="" ngModel name="category" #val="ngModel">
+               <option value=""> ---Select Category---</option>
+               <option *ngFor="let category of categories" [value]="category">{{category}}</option>
+             </select></dd>
+             <dt>Sub Category Name :</dt>
+             <dd><input type="text" name="subCategoryName" ngModel #subCategory="ngModel" required></dd>
+             <dt> Sub Category Image :</dt>
+             <dd><input type="file" name="subCategoryImage" ngModel #sub_cate_image="ngModel" required (change)="image($event)"></dd>
+         </dl>
+         <button  class="btn text-light ms-4"style="background:blue" type="submit"> Add Sub Category</button>
+        
+        </form></div>
+        <div class="col-6"*ngIf="nam=='ap'">
+            <form #productForm="ngForm" (ngSubmit)="product(productForm)">
+             <dl class="m-1 p-3"> 
+                <dt> Category Name :</dt>
+                 <dd><select class="p-2 ps-4 pe-4" value="" [(ngModel)]="category" (change)="get_sub_cate(category)" name="category" >
+               <option value=""> ---Select Category---</option>
+               <option *ngFor="let category of categories" [value]="category">{{category}}</option>
+                  </select></dd>
+                 <dt>Sub Category Name :</dt>
+                 <dd><select class="p-2 ps-4 pe-4" value="" ngModel name="sub" #val="ngModel">
+                   <option value=""> ---Select Sub Category---</option>
+                   <option *ngFor="let sub_category of sub_categories" [value]="sub_category">{{sub_category}}</option>
+                 </select></dd>
+                 <dt>Product Name :</dt>
+                 <dd><input type="text" name="p_name" ngModel #p_name="ngModel" required></dd>
+                 <dt>Product Actual Price :</dt>
+                 <dd><input type="text" name="p_actual" ngModel #p_actual="ngModel" required></dd>
+                 <dt>Product Discounted Price:</dt>
+                 <dd><input type="text" name="p_discounted" ngModel #p_discounted="ngModel" required></dd>
+                 <dt>Product OverView :</dt>
+                 <dd><input type="text" name="p_overview" ngModel #p_overview="ngModel" required></dd>
+                 <dt>Product description :</dt>
+                 <dd><textarea name="p_description" ngModel #p_description="ngModel" required> Enter Description here</textarea></dd>
+                 
+             </dl>
+             <button  class="btn text-light"style="background:blue" type="submit"> Add</button>
+             <button class="btn text-warning"style="background:green" type="button" [disabled]="!productForm.submitted"> Next</button>
+            </form></div>
+            <div class="col-6">
+                <div>
+                <div class="dropZone m-1 p-2 rounded border border-primary" appDrag (files)="filesDroped($event)">
+                    <div class="text-wrapper">
+                        <div class="text-center p-2 rounded border border-primary ">
+                               Drag and drop your file or 
+                               <a (click)="selectFile.click()" class="browse-btn"> browse</a> a file
+                        </div>
+                   </div>
+                </div>
+                
+               <input multiple
+               type="file" 
+               style="display:none;" 
+               value="select" #selectFile
+              (change)="image($event)"
+              >
+            </div>
+               <div class="text-center">
+                <h3 class="text-center text-warning"> Preview</h3>
+             <img  *ngFor="let image of images"[src]="image.url" width="100px" height="100px">
+             </div>
+             </div>
+
+       
+      </div>
+               
+            </div>
+    </div>
+    

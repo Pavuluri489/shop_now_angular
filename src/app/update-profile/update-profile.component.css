@@ -1,0 +1,48 @@
+.per{
+    min-width:33%;
+    max-width:33%;
+    min-height:65vh;
+    border-radius: 3%;
+    margin:1%;
+    padding:10px;
+    
+    color:cyan;
+}
+.add{
+    min-width:63%;
+    max-width:63%;
+    min-height:65vh;
+    border-radius:2%;
+    margin:1%;
+    padding:10px;
+    
+    color:greenyellow;
+}
+.add1,.add2{
+    min-width:48%;
+    max-width:48%;
+    margin:1%;
+    
+    color:greenyellow; 
+}
+.edit{
+    padding:3px;
+    padding-inline: 8px;
+    margin-left: 5px;
+    border-radius:15%;
+    background: yellow;
+    color:red;
+    border:none;
+}
+.edit:hover{
+    background:red ;
+    color:yellow;
+}
+@media only screen and (max-width:900px){
+    .per,.add,.add1,.add2{
+       min-width:98%; 
+       max-width:98%;
+    }
+    
+    
+}

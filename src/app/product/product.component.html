@@ -1,0 +1,53 @@
+
+<div class="card" *ngIf="splits.length<=4">
+    <h1 style="background-image: url('assets/images/animation2.gif');"class=" text-center text-warning p-2 border border-primary rounded" >{{heading | uppercase}}</h1>
+    <div class="p-2 m-2 d-flex flex-wrap">
+
+        <div class="card img_card p-2 m-3 rounded border border-warning text-center" *ngFor="let product of products" (click)="productSelected(product.productId)">
+          <h4 class="text-primary border border-light rounded">{{product.productName}}</h4>
+          <p class="text-danger border border-light rounded">{{product.productOverview}}</p>
+          <img class="image" [src]="product.productImages[2].url" >
+         <h4 class="mt-2 pt-2 pb-2"> <span class="text-light pt-2 pb-2">{{product.productDiscountedPrice | currency:'INR'}} </span>
+          <span class="text-danger pt-2 pb-2" style="text-decoration: line-through;"> {{product.productActualPrice | currency:'INR'}}</span></h4>
+        </div>
+      </div> 
+</div>
+<div class="card" *ngIf="splits.length==5">
+    <div class="row" *ngIf="product!=undefined" >
+        <h1 style="background-image: url('assets/images/animation2.gif');
+        "class=" text-center text-warning p-2 border border-primary rounded" >
+        {{product.productName | uppercase}} <span class="p-2 text-light rounded"style="font-size:small;" >{{product.productOverview }}</span> </h1>    
+        <div class="col-3 d-flex flex-wrap img_container">
+         <div>
+         <img *ngFor="let image of product.productImages,let i=index" class="card image p-3 mt-3 rounded border border-primary" [src]="image.url" (click)="clicked(i)">
+         </div>
+        </div>
+        <div class="col-4">
+          <div  class="img_dis">
+           <img  class='p-5 zoom_effect' [src]="product.productImages[p].url">
+           </div>
+           <button class="btn p-3 m-2 text-light" style="background: blue;"(click)=addCart(product.productId)>Add to Cart</button>
+           <button class="btn p-3 m-2 text-light" style="background: magenta;">Buy Now </button>
+        </div>
+        <div class="col-5">
+          <h4 style="background-image: url('assets/images/animation.gif');"class=" text-center text-danger p-2 border border-primary rounded" >Description</h4>
+          <div class="text-center p-2 rounded mt-2" style="background:linear-gradient(to right, rgba(255, 255, 255, 0.605), rgba(192, 192, 192, 0.348));min-height:450px;max-height:450px;overflow:auto;">
+             <p class="text-primary">{{product.aboutItem.description}}</p>
+          </div>
+        </div>
+    </div>
+   <div class="m-4">
+    <h1 style="background-image: url('assets/images/animation2.gif');"class=" text-center text-warning p-2 border border-primary rounded" >Related Products</h1>
+    <div class="p-2 m-2 d-flex flex-wrap">
+      
+      <div class="card img_card p-2 m-3 rounded border border-warning text-center" *ngFor="let product of products"  (click)="productSelected(product.productId)">
+        <h4 class="text-primary border border-light rounded">{{product.productName}}</h4>
+        <p class="text-danger border border-light rounded">{{product.productOverview}}</p>
+        <img class="image" [src]="product.productImages[2].url" >
+       <h4 class="mt-2 pt-2 pb-2"> <span class="text-light pt-2 pb-2">{{product.productDiscountedPrice | currency:'INR'}} </span>
+        <span class="text-danger pt-2 pb-2" style="text-decoration: line-through;"> {{product.productActualPrice | currency:'INR'}}</span></h4>
+      </div>
+    </div> 
+   </div> 
+</div>
+

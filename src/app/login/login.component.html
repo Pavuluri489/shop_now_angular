@@ -1,0 +1,27 @@
+
+<div class="card">
+    <div class="col bg-dark frms m-5 p-2 ">
+        <h1 class="text-center head">Login Form</h1>
+        <form #loginForm="ngForm" (ngSubmit)="login(loginForm)">
+            <dl class="frm">
+                <dt><label class="lbl">User Name:</label></dt>
+                <dd><input class="in" [ngClass]="{'vld':username.invalid}" type="text" name="userName" ngModel #username="ngModel" required minlength="5" pattern="[a-zA-Z0-9 @#$%&_]*"></dd>
+                <dd *ngIf="username.invalid && username.touched" class="text-danger"><span class="bi bi-x-circle-fill"></span> minimum length 5  & Chars,digits,spaces and '@#$%&_' are allowed !</dd>
+                <dd *ngIf="username.valid" class="text-light"><span class="bi bi-check-circle-fill"></span> Valid</dd>
+                <dt><label class="lbl">Password:</label></dt>
+                <dd><input class="in" [ngClass]="{'vld':pwd.invalid}" type="password" name="password" ngModel #pwd="ngModel"  required minlength="8"
+                    pattern="(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}"></dd>
+                <dd *ngIf="pwd.invalid && pwd.touched" class="text-danger"><span class="bi bi-x-circle-fill"></span> minimum length 8 & Atleast one lower, upper case ,digit and special char is required !</dd>
+                <dd *ngIf="pwd.valid" class="text-light"><span class="bi bi-check-circle-fill"></span> Valid</dd>
+            <br>
+            <dd><span class="lbl" style="color:orangered;cursor:pointer" routerLink="/forgot-password"> forgot Password ?</span></dd>
+            <dd class="bt"><button class="btn text-light" style="background: yellowgreen;" [disabled]="loginForm.invalid">Login</button></dd>
+            <dd class="bt"><span class="text-danger"*ngIf="loginForm.invalid">Disabled</span><span style="color:magenta"*ngIf="loginForm.valid">Enabled</span></dd>
+            
+            <br>
+        <dd><p style="color:azure"> New User ? Please <span routerLink="/register" class="spn">Register</span></p></dd>
+        </dl>
+        </form>
+    </div>
+    
+</div>

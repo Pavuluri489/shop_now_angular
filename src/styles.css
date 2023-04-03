@@ -1,1 +1,122 @@
 /* You can add global styles to this file, and also import other style files */
+@import "../node_modules/bootstrap/dist/css/bootstrap.css";
+@import "../node_modules/bootstrap-icons/font/bootstrap-icons.css";
+html, body { height: 100%; }
+body { margin: 0; font-family: Algerian, "Helvetica Neue", sans-serif;font-size: smaller; }
+*{list-style: none; background: fixed;background-image: url("assets/images/title2.gif");
+background-repeat: no-repeat;background-size: cover;background-attachment: fixed;}
+
+.in{
+    padding:1%;
+    background:greenyellow;
+    color:blue;
+    min-width:150px;
+    width:35%;
+    border:none;
+    border-radius:1%;
+}
+.lbl{
+    
+    color:whitesmoke;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-style: italic;
+}
+.frm{
+    margin-left: 25%;
+}
+.head{
+    color:yellow;
+}
+.bt{
+    margin-left:10%;
+}
+.spn{
+    color:cyan;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    cursor:pointer;
+}
+.spn:hover{
+    color:black;
+    border:1px solid white;
+}
+.vld{
+    color:red;
+    background:white;
+}
+
+.frms{
+    height:75vh;
+    overflow:auto;
+}
+.acc{
+    
+    color:orangered;
+}
+.main{
+    
+    color:blue; 
+}
+.btns{
+    background:none;
+    border:none;
+}
+.heading{
+    color:red;
+}
+.sub{
+    color:darkblue
+}
+.img_card,.image{
+    background-image:url('assets/images/photo.gif');
+}
+.img_card{
+    min-width:300px;
+    max-width:300px;
+}
+.image{
+   
+   width:200px;height:250px;
+}
+.image:hover{
+    transform:scale(1.1);
+    background: none;
+}
+.img_container{
+    max-height:500px;
+    overflow: auto;
+}
+.img_dis{
+    margin-top:2%;
+    background: fixed;
+    background-image:url('assets/images/photo-2.gif');
+    background-size: cover;
+    background-attachment: fixed;
+    min-height:400px;
+    border-radius:2%;
+    border:1px solid magenta;
+}
+.zoom_effect{
+background: none;
+animation: zoom 5s ease-in-out 0s infinite alternate;
+}
+@keyframes zoom {
+    0%{
+        opacity:0.4.;
+        transform:scale(1);
+        filter: drop-shadow(30px 30px 50px red);
+    }
+    100%{
+        opacity:1;
+        transform: scale(2);
+        filter: drop-shadow(6px 6px 10px yellow);
+    }
+    
+}
+.btn{
+    cursor:pointer;
+    border:1px solid blueviolet;
+}
+.btn:hover{
+    background: red;
+    color:yellow;
+}

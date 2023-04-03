@@ -1,0 +1,19 @@
+<header >
+    
+   <nav class="d-flex  p-2  justify-content-between bg-primary text-white">
+        <div>
+            
+        <button  class="btn ms-5" routerLink="/">Home</button>
+        </div>
+         
+    <div class="text-center"><h2><i class="bi bi-cart-fill"></i><u> shop Now</u><br><h5 > delivers to home</h5></h2></div>
+    <div>
+        <input type="search" placeholder="Search here" name="key" [(ngModel)]="key" *ngIf="isActive" class="text-center p-2"(keyup.enter)=search(key)>
+        <button class="btn" (click)="searchBar()"><i class="bi bi-search"></i></button>
+        
+        <button *ngIf="isLoggedIn() && isUser()" class="btn position-relative"><span class="bi bi-cart"></span> <span class="badge rounded rounded-circle bg-danger text-white position-absolute">0</span> </button>
+    </div>
+   </nav>
+   
+</header>
+
