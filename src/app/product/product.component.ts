@@ -135,6 +135,7 @@ addCart(id:number){
   this.cartservice.addToCart(id,this.customer.userName).subscribe(
     (res:any)=>{
       console.log(res);
+      this.cartservice.addItems(res);
     },
     (err:HttpErrorResponse)=>{
       console.log(err);

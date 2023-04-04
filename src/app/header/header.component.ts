@@ -15,22 +15,20 @@ export class HeaderComponent implements OnInit {
  public isActive:boolean=false;
  public key:string='';
  customer:any;
+ cartItemsCount=0;
  constructor(
   private authService:AuthService,
   private router:Router,
   private userService:UserService,
   private cartService:CartService
-){}
+  ){}
 ngOnInit(): void {
   if(this.authService.isLoggedIn()){
    this.customer= this.authService.getCustomer();
    console.log(this.customer);
-   this.cartService.getCartList(this.customer.userName).subscribe(
+   this.cartService.getCount(this.customer.username).subscribe(
     (res:any)=>{
-      console.log("cart :"+res.length);
-    },
-    (err:HttpErrorResponse)=>{
-      console.log(err);
+     this.cartItemsCount=res.length;
     }
    );
   }

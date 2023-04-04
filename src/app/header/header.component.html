@@ -11,7 +11,7 @@
         <input type="search" placeholder="Search here" name="key" [(ngModel)]="key" *ngIf="isActive" class="text-center p-2"(keyup.enter)=search(key)>
         <button class="btn" (click)="searchBar()"><i class="bi bi-search"></i></button>
         
-        <button *ngIf="isLoggedIn() && isUser()" class="btn position-relative"><span class="bi bi-cart"></span> <span class="badge rounded rounded-circle bg-danger text-white position-absolute">0</span> </button>
+        <button *ngIf="isLoggedIn()" class="btn position-relative"><span class="bi bi-cart"></span> <span class="badge rounded rounded-circle bg-danger text-white position-absolute">{{cartItemsCount}}</span> </button>
     </div>
    </nav>
    

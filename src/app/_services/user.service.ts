@@ -7,7 +7,7 @@ import { AuthService } from './auth.service';
 })
 export class UserService {
  
-  API_PATH='https://localhost:9000/auth/'
+  API_PATH='http://localhost:9000/auth/'
   requestHeader= new HttpHeaders({"No-Auth": 'True'})
  
   constructor(

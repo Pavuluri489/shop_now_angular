@@ -7,7 +7,7 @@ import { Injectable } from '@angular/core';
 export class ProductService {
 
   constructor(private httpClient:HttpClient) { }
-  API_Path='https://localhost:9000/';
+  API_Path='http://localhost:9000/';
   addCategory(data:FormData){
     return this.httpClient.post(`${this.API_Path}834915/product/addCategory`,data);
   }
